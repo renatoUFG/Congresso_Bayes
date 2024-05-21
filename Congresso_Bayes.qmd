@@ -1,5 +1,5 @@
 ---
-title: "Congresso_Bayes"
+title: "Estimação de Parâmetros de Redes Psicométricas usando INLA"
 author:
   - Renato Rodrigues Silva
   - Márcio Rodrigues 
@@ -9,15 +9,16 @@ output:
     number_sections: yes
     toc: yes
     journal_format: "elsevier"
-bibliography: references.bib
+bibliography: reference.bib
 csl: apa.csl
+lang: pt
 ---
 
 # Outline
 
 ## Introdução
 
-Recentemente, análises de redes psicométrica tem sido bastante utilizadas em diversas áreas do conhecimento, tais como: psicologia social, psicopatologia, psicologia da personalidade, saúde pública, gerontolgia, entre outras
+Análises de redes psicométrica tem sido utilizadas em diversas áreas do conhecimento, tais como: psicologia ambiental, psicopatologia, psicologia da personalidade, saúde pública entre outras [@ZWICKER2020101433; @Borsboom2017; @COSTANTINI201513; @Soares2022 ]. A partir da premissa que o fenômeno a ser estudado seja um sistema complexo, análises de redes psicométricas objetiva representar esses sistema em forma de um grafo não direcionado, identificar relações entre as variáveis desses sistema e padrões de agrupamentos [@Epskamp2022]
 
 ## PMRF
 
@@ -34,6 +35,8 @@ INLA Autologistic
 bgms
 
 Comparação de Resultados
+
+Referências
 
 ```{r}
 #| message: false

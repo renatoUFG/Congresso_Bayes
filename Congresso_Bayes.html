@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.554">
@@ -10,7 +10,7 @@
 <meta name="author" content="Márcio Rodrigues">
 <meta name="author" content="Everton Batista">
 
-<title>Congresso_Bayes</title>
+<title>Estimação de Parâmetros de Redes Psicométricas usando INLA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="Congresso_Bayes_files/libs/clipboard/clipboard.min.js"></script>
@@ -48,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Congresso_Bayes</h1>
+<h1 class="title">Estimação de Parâmetros de Redes Psicométricas usando INLA</h1>
 </div>
 
 
@@ -56,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-heading">Autores</div>
     <div class="quarto-title-meta-contents">
              <p>Renato Rodrigues Silva </p>
              <p>Márcio Rodrigues </p>
@@ -77,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Outline</h1>
 <section id="introdução" class="level2">
 <h2 class="anchored" data-anchor-id="introdução">Introdução</h2>
-<p>Recentemente, análises de redes psicométrica tem sido bastante utilizadas em diversas áreas do conhecimento, tais como: psicologia social, psicopatologia, psicologia da personalidade, saúde pública, gerontolgia, entre outras </p>
+<p>Análises de redes psicométrica tem sido utilizadas em diversas áreas do conhecimento, tais como: psicologia ambiental, psicopatologia, psicologia da personalidade, saúde pública entre outras <span class="citation" data-cites="ZWICKER2020101433 Borsboom2017 COSTANTINI201513 Soares2022">(<a href="#ref-Borsboom2017" role="doc-biblioref">Borsboom, 2017</a>; <a href="#ref-COSTANTINI201513" role="doc-biblioref">Costantini et al., 2015</a>; <a href="#ref-Soares2022" role="doc-biblioref">Soares et al., 2022</a> ; <a href="#ref-ZWICKER2020101433" role="doc-biblioref">Zwicker et al., 2020</a>)</span>. A partir da premissa que o fenômeno a ser estudado seja um sistema complexo, análises de redes psicométricas objetiva representar esses sistema em forma de um grafo não direcionado, identificar relações entre as variáveis desses sistema e padrões de agrupamentos <span class="citation" data-cites="Epskamp2022">(<a href="#ref-Epskamp2022" role="doc-biblioref">Epskamp &amp; Isvoranu, 2022</a>)</span></p>
 </section>
 <section id="pmrf" class="level2">
 <h2 class="anchored" data-anchor-id="pmrf">PMRF</h2>
@@ -88,10 +108,28 @@ ul.task-list li input[type="checkbox"] {
 <p>INLA Autologistic</p>
 <p>bgms</p>
 <p>Comparação de Resultados</p>
+<p>Referências</p>
+
 </section>
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referências</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Borsboom2017" class="csl-entry" role="listitem">
+Borsboom, D. (2017). A network theory of mental disorders. <em>World Psychiatry</em>, <em>16</em>(1), 5–13. https://doi.org/<a href="https://doi.org/10.1002/wps.20375">https://doi.org/10.1002/wps.20375</a>
+</div>
+<div id="ref-COSTANTINI201513" class="csl-entry" role="listitem">
+Costantini, G., Epskamp, S., Borsboom, D., Perugini, M., Mõttus, R., Waldorp, L. J., &amp; Cramer, A. O. J. (2015). State of the aRt personality research: A tutorial on network analysis of personality data in R. <em>Journal of Research in Personality</em>, <em>54</em>, 13–29. https://doi.org/<a href="https://doi.org/10.1016/j.jrp.2014.07.003">https://doi.org/10.1016/j.jrp.2014.07.003</a>
+</div>
+<div id="ref-Epskamp2022" class="csl-entry" role="listitem">
+Epskamp, S., &amp; Isvoranu, A.-M. (2022). New trends in network modeling of psychopathology. <em>World Psychiatry</em>, <em>21</em>(3), 463–464. https://doi.org/<a href="https://doi.org/10.1002/wps.21017">https://doi.org/10.1002/wps.21017</a>
+</div>
+<div id="ref-Soares2022" class="csl-entry" role="listitem">
+Soares, G. H., Bado, F. M. R., Tenani, C. F., Ribeiro Santiago, P. H., Jamieson, L. M., &amp; Mialhe, F. L. (2022). A psychometric network perspective to oral health literacy: Examining the replicability of network properties across the general community and older adults from Brazil. <em>Journal of Public Health Dentistry</em>, <em>82</em>(3), 321–329. https://doi.org/<a href="https://doi.org/10.1111/jphd.12539">https://doi.org/10.1111/jphd.12539</a>
+</div>
+<div id="ref-ZWICKER2020101433" class="csl-entry" role="listitem">
+Zwicker, M. V., Nohlen, H. U., Dalege, J., Gruter, G.-J. M., &amp; van Harreveld, F. (2020). Applying an attitude network approach to consumer behaviour towards plastic. <em>Journal of Environmental Psychology</em>, <em>69</em>, 101433. https://doi.org/<a href="https://doi.org/10.1016/j.jenvp.2020.101433">https://doi.org/10.1016/j.jenvp.2020.101433</a>
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -147,12 +185,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiada");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiada");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
