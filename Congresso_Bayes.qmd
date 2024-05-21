@@ -11,17 +11,27 @@ output:
     journal_format: "AJPS"
 ---
 
-# Seção 1
+# Outline
 
-Este é o conteúdo da Seção 1.
+## Introdução
 
-## Subseção 1.1
+Recentemente, análises de redes psicométrica tem sido bastante utilizadas em diversas áreas do conhecimento, tais como: psicologia social, psicopatologia, psicologia da personalidade, saúde pública, gerontolgia, entre outras (
 
-Este é o conteúdo da Subseção 1.1.
+## PMRF
 
-# Seção 2
+Ising Model
 
-Este é o conteúdo da Seção 2.
+Relação entre Ising Model e Modelo Autologisitico
+
+INLA
+
+Aplicação
+
+INLA Autologistic
+
+bgms
+
+Comparação de Resultados
 
 ```{r}
 #| message: false
