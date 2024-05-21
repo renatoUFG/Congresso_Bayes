@@ -8,14 +8,16 @@ output:
   quarto::quarto_article:
     number_sections: yes
     toc: yes
-    journal_format: "AJPS"
+    journal_format: "elsevier"
+bibliography: references.bib
+csl: apa.csl
 ---
 
 # Outline
 
 ## Introdução
 
-Recentemente, análises de redes psicométrica tem sido bastante utilizadas em diversas áreas do conhecimento, tais como: psicologia social, psicopatologia, psicologia da personalidade, saúde pública, gerontolgia, entre outras (
+Recentemente, análises de redes psicométrica tem sido bastante utilizadas em diversas áreas do conhecimento, tais como: psicologia social, psicopatologia, psicologia da personalidade, saúde pública, gerontolgia, entre outras
 
 ## PMRF
 
