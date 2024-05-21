@@ -1,11 +1,32 @@
 ---
 title: "Congresso_Bayes"
+author:
+  - Renato Rodrigues Silva
+  - Márcio Rodrigues 
+  - Everton Batista
+output: 
+  quarto::quarto_article:
+    number_sections: yes
+    toc: yes
+    journal_format: "AJPS"
 ---
 
-## Quarto
+# Seção 1
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Este é o conteúdo da Seção 1.
+
+## Subseção 1.1
+
+Este é o conteúdo da Subseção 1.1.
+
+# Seção 2
+
+Este é o conteúdo da Seção 2.
 
 ```{r}
+#| message: false
+#| warning: false
+#| include: false  
+
 library(tidyverse)
 ```
