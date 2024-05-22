@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Renato Rodrigues Silva">
-<meta name="author" content="Márcio Rodrigues">
-<meta name="author" content="Everton Batista">
+<meta name="author" content="Márcio Augusto Ferreira Rodrigues">
+<meta name="author" content="Everton Batista da Rocha">
 
-<title>Estimação de Parâmetros de Redes Psicométricas usando INLA</title>
+<title>Estimação de Redes Psicométrica usando abordagem INLA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,22 +68,49 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Estimação de Parâmetros de Redes Psicométricas usando INLA</h1>
+<h1 class="title">Estimação de Redes Psicométrica usando abordagem INLA</h1>
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Autores</div>
+  <div class="quarto-title-meta-heading">Afiliação</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Renato Rodrigues Silva <a href="mailto:renato.rrsilva@ufg.br" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Instituto de Matemática e Estatística
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Márcio Augusto Ferreira Rodrigues </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Instituto de Matemática e Estatística
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Everton Batista da Rocha </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Instituto de Matemática e Estatística
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta">
 
+      
     <div>
-    <div class="quarto-title-meta-heading">Autores</div>
+    <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-             <p>Renato Rodrigues Silva </p>
-             <p>Márcio Rodrigues </p>
-             <p>Everton Batista </p>
-          </div>
+      <p class="date">21 de maio de 2024</p>
+    </div>
   </div>
-    
   
     
   </div>
@@ -97,10 +124,11 @@ div.csl-indent {
 <h1>Outline</h1>
 <section id="introdução" class="level2">
 <h2 class="anchored" data-anchor-id="introdução">Introdução</h2>
-<p>Análises de redes psicométrica tem sido utilizadas em diversas áreas do conhecimento, tais como: psicologia ambiental, psicopatologia, psicologia da personalidade, saúde pública entre outras <span class="citation" data-cites="ZWICKER2020101433 Borsboom2017 COSTANTINI201513 Soares2022">(<a href="#ref-Borsboom2017" role="doc-biblioref">Borsboom, 2017</a>; <a href="#ref-COSTANTINI201513" role="doc-biblioref">Costantini et al., 2015</a>; <a href="#ref-Soares2022" role="doc-biblioref">Soares et al., 2022</a> ; <a href="#ref-ZWICKER2020101433" role="doc-biblioref">Zwicker et al., 2020</a>)</span>. A partir da premissa que o fenômeno a ser estudado seja um sistema complexo, análises de redes psicométricas objetiva representar esses sistema em forma de um grafo não direcionado, identificar relações entre as variáveis desses sistema e padrões de agrupamentos <span class="citation" data-cites="Epskamp2022">(<a href="#ref-Epskamp2022" role="doc-biblioref">Epskamp &amp; Isvoranu, 2022</a>)</span></p>
+<p>Nos últimos anos, análise de rede psicométrica tem sido utilizada em diversas áreas do conhecimento, tais como: psicologia ambiental, psicopatologia, psicologia da personalidade, saúde pública entre outras <span class="citation" data-cites="ZWICKER2020101433 Borsboom2017 COSTANTINI201513 Soares2022">(<a href="#ref-Borsboom2017" role="doc-biblioref">Borsboom, 2017</a>; <a href="#ref-COSTANTINI201513" role="doc-biblioref">Costantini et al., 2015</a>; <a href="#ref-Soares2022" role="doc-biblioref">Soares et al., 2022</a> ; <a href="#ref-ZWICKER2020101433" role="doc-biblioref">Zwicker et al., 2020</a>)</span>. Pressupondo que o fenômeno a ser estudado seja um sistema complexo, esse método permite a representação das variáveis que compõem esse sistema em forma de um grafo não direcionado <span class="citation" data-cites="Murphy2012">(<a href="#ref-Murphy2012" role="doc-biblioref">Murphy, 2012</a>)</span>, bem como a identificação relações entre elas e padrões de agrupamentos <span class="citation" data-cites="Epskamp2022">(<a href="#ref-Epskamp2022" role="doc-biblioref">Epskamp &amp; Isvoranu, 2022</a>)</span>. Em uma hipotética, um transtorno mental como a depressão seria considerado um sistema complexo composto por diversos sintomas (fadiga, anedonia, humor hipotímico, insônia, irritabilidade, etc …) que se relacionam uns com os outros, se retroalimentando. Matematicamente, os sintomas seriam representados por nodos e a relação entre esses sintomas por arestas de um grafo não direcionado. Na saúde pública, pode-se modelar o fenômeno de múltiplas morbidades crônicas em uma determinada população, por meio de um grafo não direcionado, em que os nodos representa cada morbidade (diabetas, pressão alta, derrame, problemas pulmonares e etc …) e a relação entre elas são representadas por arestas. Logo, em ambos os exemplos, seriam</p>
 </section>
 <section id="pmrf" class="level2">
 <h2 class="anchored" data-anchor-id="pmrf">PMRF</h2>
+<p>A análise de redes psicométricas são baseadas no modelo probabilístico Campo Aleatório de Markov (CAM). CAM pode ser definido como um conjunto de variáveis aleatórias</p>
 <p>Ising Model</p>
 <p>Relação entre Ising Model e Modelo Autologisitico</p>
 <p>INLA</p>
@@ -122,6 +150,9 @@ Costantini, G., Epskamp, S., Borsboom, D., Perugini, M., Mõttus, R., Waldorp, L
 </div>
 <div id="ref-Epskamp2022" class="csl-entry" role="listitem">
 Epskamp, S., &amp; Isvoranu, A.-M. (2022). New trends in network modeling of psychopathology. <em>World Psychiatry</em>, <em>21</em>(3), 463–464. https://doi.org/<a href="https://doi.org/10.1002/wps.21017">https://doi.org/10.1002/wps.21017</a>
+</div>
+<div id="ref-Murphy2012" class="csl-entry" role="listitem">
+Murphy, K. P. (2012). <em>Machine learning: a probabilistic perspective</em>. MIT Press.
 </div>
 <div id="ref-Soares2022" class="csl-entry" role="listitem">
 Soares, G. H., Bado, F. M. R., Tenani, C. F., Ribeiro Santiago, P. H., Jamieson, L. M., &amp; Mialhe, F. L. (2022). A psychometric network perspective to oral health literacy: Examining the replicability of network properties across the general community and older adults from Brazil. <em>Journal of Public Health Dentistry</em>, <em>82</em>(3), 321–329. https://doi.org/<a href="https://doi.org/10.1111/jphd.12539">https://doi.org/10.1111/jphd.12539</a>

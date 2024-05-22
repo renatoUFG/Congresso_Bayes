@@ -1,26 +1,64 @@
 ---
-title: "Estimação de Parâmetros de Redes Psicométricas usando INLA"
+title: "Redes Psicométricas para Dados Binários usando abordagem INLA"
 author:
-  - Renato Rodrigues Silva
-  - Márcio Rodrigues 
-  - Everton Batista
-output: 
-  quarto::quarto_article:
-    number_sections: yes
-    toc: yes
-    journal_format: "elsevier"
+  - name: Renato Rodrigues Silva
+    email: renato.rrsilva@ufg.br
+    affiliations: 
+        - name: Federal University of Goias
+          department: Institute of Mathematics and Statistics
+          address: Street Address
+          city: Goiânia
+          state: Goiás
+          postal-code: 74001-970
+    attributes:
+        corresponding: true
+    note: This is the first author footnote.
+  - name: Márcio Augusto Ferreira Rodrigues
+    email: marcioaugusto@ufg.br 
+    affiliations:
+        - name: Federal University of Goias
+          department: Institute of Mathematics and Statistics
+          address: Street Address
+          city: Goiânia
+          state: Goiás
+          postal-code: 74001-970
+  - name: Everton Batista da Rocha
+    email: evertonbatista@ufg.br 
+    affiliations:
+        - name: Federal University of Goias
+          department: Institute of Mathematics and Statistics
+          address: Street Address
+          city: Goiânia
+          state: Goiás
+          postal-code: 74001-970
+abstract: |
+  This is the abstract. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum augue turpis, dictum non malesuada a, volutpat eget velit. Nam placerat turpis purus, eu tristique ex tincidunt et. Mauris sed augue eget turpis ultrices tincidunt. Sed et mi in leo porta egestas. Aliquam non laoreet velit. Nunc quis ex vitae eros aliquet auctor nec ac libero. Duis laoreet sapien eu mi luctus, in bibendum leo molestie. Sed hendrerit diam diam, ac dapibus nisl volutpat vitae. Aliquam bibendum varius libero, eu efficitur justo rutrum at. Sed at tempus elit.
+keywords: 
+  - keyword1
+  - keyword2
+date: last-modified
 bibliography: reference.bib
-csl: apa.csl
-lang: pt
+format:
+  elsevier-pdf:
+    keep-tex: true
+    journal:
+      name: Journal Name
+      formatting: preprint
+      model: 3p
+      cite-style: super
 ---
 
-# Outline
+# Introdução
 
-## Introdução
+Análise de rede psicométrica tem sido utilizada em diversas áreas do conhecimento, tais como: psicologia ambiental, psicopatologia, psicologia da personalidade, saúde pública entre outras [@ZWICKER2020101433; @Borsboom2017; @COSTANTINI201513; @Soares2022 ]. A pressuposição dessa análise é que o fenômeno a ser estudado seja um sistema complexo. Sendo assim, a análise de redes proporciona que a representação das variáveis que compõem o sistema seja feita através de um grafo não direcionado [@Murphy2012]. Além disso, é possível fazer modelar as relações entre as variáveis e identificar padrões de agrupamentos [@Epskamp2022]. Por exemplo, em uma aplicação hipotética na área de psicopatologia, pode-se assumir que os constructos de um transtorno de depressão maior e transtorno de ansiedade generalizada poderiam formar um sistema complexo, composto por diversos sintomas (fadiga, anedonia, humor hipotímico, insônia, irritabilidade, dificuldade de concentração, tensão muscular, etc ...). E esses sintomas se relacionam uns com os outros, de tal modo que eles se retroalimentam mutuamente. Os sintomas seriam representados matematicamente por nodos e a relação entre esses sintomas por arestas de um grafo não direcionado. Nesse exemplo, o objetivo dos pesquisadores seria verificar o padrão de agrupamentos dos sintomas e o relacionamento entre eles.
 
-Análises de redes psicométrica tem sido utilizadas em diversas áreas do conhecimento, tais como: psicologia ambiental, psicopatologia, psicologia da personalidade, saúde pública entre outras [@ZWICKER2020101433; @Borsboom2017; @COSTANTINI201513; @Soares2022 ]. A partir da premissa que o fenômeno a ser estudado seja um sistema complexo, análises de redes psicométricas objetiva representar esses sistema em forma de um grafo não direcionado, identificar relações entre as variáveis desses sistema e padrões de agrupamentos [@Epskamp2022]
+A análise de redes psicométricas são baseadas nos modelos probabilísticos denominados Campo Aleatório de Markov (CAM) [@Murphy2012]. Nas situações em que se tem apenas variáveis aleatórias contínuas, tem-se usado os modelos Campo Aleatório de Markov Gaussianos. Por sua vez, para variáveis aleatórias dicotômicas, o modelo CAM reduz-se aos modelos Ising [@Murphy2012], objeto de interesse desse presente estudo. Pode-se demostrar que o modelo Ising é relacionado com o modelo de regressão logística, de tal forma que para estimar a relação de associação entre um nodo e os demais, utiliza-se o modelo logístico em que as covariáveis são os nodos remanescentes e a variável resposta é o nodo em questão [@vanBorkulo]. A estimação dos parâmetros desses modelos é algo desafiador. Por exemplo, para o modelo com dados binários, o número de parâmetros é dado por: $\frac{k*(k+1)}{2},$ em que $k$ é o número de nodos do grafo. Sob o enfoque clássico ou frequentista, a solução encontrada foi estimar os parâmetros com regularização LASSO [@Epskamp2018; @vanBorkulo]. Como enfoque alternativo para estimar os parâmetros, recentemente, observou-se publicações de estudos de análise de redes psicométricas utilizando a abordagem Bayesiana. @Marsman2023
 
-## PMRF
+[@Huth; @Marsman2023].
+
+## Campo Aleatório de Markov
+
+CAM pode ser definido como um conjunto de variáveis aleatórias
 
 Ising Model
 
