@@ -118,29 +118,22 @@ year = {2022}
 
 
 @article{Huth ,
-author = {Karoline B. S. Huth and Jill de Ron and Anneke E. Goudriaan and Judy Luigjes and Reza Mohammadi and Ruth J. van Holst and Eric-Jan Wagenmakers and Maarten Marsman},
+author = {Karoline B. S. Huth and Jill de Ron and Anneke E. Goudriaan and Judy Luigjes and Reza Mohammadi and 
+Ruth J. van Holst and Eric-Jan Wagenmakers and Maarten Marsman},
 title ={Bayesian Analysis of Cross-Sectional Networks: A Tutorial in R and JASP},
-
 journal = {Advances in Methods and Practices in Psychological Science},
 volume = {6},
 number = {4},
 pages = {25152459231193334},
 year = {2023},
 doi = {10.1177/25152459231193334},
-
 URL = { 
     
         https://doi.org/10.1177/25152459231193334
-    
-    
-
-},
+ },
 eprint = { 
     
         https://doi.org/10.1177/25152459231193334
-    
-    
-
 }
 ,
     abstract = { Network psychometrics is a new direction in psychological research that conceptualizes psychological constructs as systems of interacting variables. In network analysis, variables are represented as nodes, and their interactions yield (partial) associations. Current estimation methods mostly use a frequentist approach, which does not allow for proper uncertainty quantification of the model and its parameters. Here, we outline a Bayesian approach to network analysis that offers three main benefits. In particular, applied researchers can use Bayesian methods to (1) determine structure uncertainty, (2) obtain evidence for edge inclusion and exclusion (i.e., distinguish conditional dependence or independence between variables), and (3) quantify parameter precision. In this article, we provide a conceptual introduction to Bayesian inference, describe how researchers can facilitate the three benefits for networks, and review the available R packages. In addition, we present two user-friendly software solutions: a new R package, easybgm, for fitting, extracting, and visualizing the Bayesian analysis of networks and a graphical user interface implementation in JASP. The methodology is illustrated with a worked-out example of a network of personality traits and mental health. }
@@ -164,7 +157,7 @@ eprint = {
 }
 
 
-@article{Epskamp 2018,
+@article{Epskamp2018,
 author = {Sacha Epskamp and Denny Borsboom and Eiko I. Fried },
 title = {Estimating psychological networks and their accuracy: A tutorial paper. },
 journal = {Behav Res },
@@ -176,14 +169,117 @@ year = {2018}
 }
 
 
-@article{vanBorkulo,
-author = {van Borkulo, Claudia D. and Borsboom, Denny and Epskamp, Sacha and Blanken, Tessa F. and Boschloo, Lynn and Schoevers, Robert A. and Waldorp, Lourens J.},
-title = {A new method for constructing networks from binary data.},
+@article{vanBorkulo2014,
+author = { Claudia D. vanBorkulo and Denny  Borsboom and  Sacha Epskamp and Tessa F.  Blanken and  Lynn Boschloo and Robert A. Schoevers and Lourens J Waldorp},
+title = {A new method for constructing networks from binary data},
 journal = {Scientific Reports },
 volume = {4},
 pages = {5918 },
 doi = {https://doi.org/10.1038/srep05918},
 year = {2014}
+}
+
+
+
+@Article{Friedman2010,
+    title = {Regularization Paths for Generalized Linear Models via
+      Coordinate Descent},
+    author = {Jerome Friedman and Robert Tibshirani and Trevor Hastie},
+    journal = {Journal of Statistical Software},
+    year = {2010},
+    volume = {33},
+    number = {1},
+    pages = {1--22},
+    doi = {10.18637/jss.v033.i01}
+  }
+  
+  
+@book{Rue2005,
+  title     =  {Machine learning: a probabilistic perspective},
+  author  =  {Havard Rue and Leonhard Held},
+  year      =  {2005},
+  publisher = {Chapman and Hall/CRC},
+  address   = {New York},
+  doi = {https://doi.org/10.1201/9780203492024},
+  pages = {280}
+}  
+  
+ 
+
+
+
+@article{JSSv089i03,
+ title={BDgraph: An R Package for Bayesian Structure Learning in Graphical Models},
+ volume={89},
+ url={https://www.jstatsoft.org/index.php/jss/article/view/v089i03},
+ doi={10.18637/jss.v089.i03},
+ abstract={Graphical models provide powerful tools to uncover complicated patterns in multivariate data and are commonly used in Bayesian statistics and machine learning. In this paper, we introduce the R package BDgraph which performs Bayesian structure learning for general undirected graphical models (decomposable and non-decomposable) with continuous, discrete, and mixed variables. The package efficiently implements recent improvements in the Bayesian literature, including that of Mohammadi and Wit (2015) and Dobra and Mohammadi (2018). To speed up computations, the computationally intensive tasks have been implemented in C++ and interfaced with R, and the package has parallel computing capabilities. In addition, the package contains several functions for simulation and visualization, as well as several multivariate datasets taken from the literature and used to describe the package capabilities. The paper includes a brief overview of the statistical methods which have been implemented in the package. The main part of the paper explains how to use the package. Furthermore, we illustrate the packageâ€™s functionality in both real and artificial examples.},
+ number={3},
+ journal={Journal of Statistical Software},
+ author={Mohammadi, Reza and Wit, Ernst C.},
+ year={2019},
+ pages={1â€“30}
+}
+
+
+
+
+@article{Lima-Costa2018,
+    author = {Lima-Costa, M Fernanda and de Andrade, Fabíola Bof and Souza, Paulo Roberto Borges de and Neri, Anita Liberalesso and Duarte, Yeda Aparecida de Oliveira and Castro-Costa, Erico and de Oliveira, Cesar},
+    title = "{The Brazilian Longitudinal Study of Aging (ELSI-Brazil): Objectives and Design}",
+    journal = {American Journal of Epidemiology},
+    volume = {187},
+    number = {7},
+    pages = {1345-1353},
+    year = {2018},
+    month = {01},
+    abstract = "{Brazil is experiencing among the world?s fastest demographic aging worldwide. This demographic transition is occurring in a context of few resources and great social inequalities. The Brazilian Longitudinal Study of Aging (ELSI-Brazil) is a nationally representative study of 9,412 people aged 50 years or older, residing in 70 municipalities across the 5 Brazilian regions. ELSI-Brazil allows investigations of the aging process, its health, psychosocial and economic determinants, and societal consequences. The baseline examination (2015?2016) included detailed household and individual interviews and physical measurements (blood pressure, anthropometry, grip strength, and timed walk and balance tests). Blood tests and sample storage were performed in a subsample of study participants. Subsequent waves are planned for every 3 years. The study adopts a conceptual framework common to other large-scale longitudinal studies of aging in the world, such as the Health and Retirement Study, allowing cross-national comparisons. The goal of ELSI-Brazil is not only to build an understanding of aging in a large, Western, middle-income country in a rapid demographic transition but also to provide scientific data to support and study policy changes that may affect older adults. We describe the methodology of the study and some descriptive results of the baseline survey.}",
+    issn = {0002-9262},
+    doi = {10.1093/aje/kwx387},
+    url = {https://doi.org/10.1093/aje/kwx387},
+    eprint = {https://academic.oup.com/aje/article-pdf/187/7/1345/25076724/kwx387.pdf},
+}
+
+
+
+@article{JSSv093i08,
+ title={mgm: Estimating Time-Varying Mixed Graphical Models in High-Dimensional Data},
+ volume={93},
+ url={https://www.jstatsoft.org/index.php/jss/article/view/v093i08},
+ doi={10.18637/jss.v093.i08},
+ abstract={We present the R package mgm for the estimation of k-order mixed graphical models (MGMs) and mixed vector autoregressive (mVAR) models in high-dimensional data. These are a useful extensions of graphical models for only one variable type, since data sets consisting of mixed types of variables (continuous, count, categorical) are ubiquitous. In addition, we allow to relax the stationarity assumption of both models by introducing time-varying versions of MGMs and mVAR models based on a kernel weighting approach. Time-varying models offer a rich description of temporally evolving systems and allow to identify external influences on the model structure such as the impact of interventions. We provide the background of all implemented methods and provide fully reproducible examples that illustrate how to use the package.},
+ number={8},
+ journal={Journal of Statistical Software},
+ author={Jonas M. B. Haslbeck and Lourens J. Waldorp},
+ year={2020},
+ pages={1â€“46}
+}
+
+
+@article{JSSv048i04,
+ title={qgraph: Network Visualizations of Relationships in Psychometric Data},
+ volume={48},
+ url={https://www.jstatsoft.org/index.php/jss/article/view/v048i04},
+ doi={10.18637/jss.v048.i04},
+ abstract={We present the qgraph package for R, which provides an interface to visualize data through network modeling techniques. For instance, a correlation matrix can be represented as a network in which each variable is a node and each correlation an edge; by varying the width of the edges according to the magnitude of the correlation, the structure of the correlation matrix can be visualized. A wide variety of matrices that are used in statistics can be represented in this fashion, for example matrices that contain (implied) covariances, factor loadings, regression parameters and p values. qgraph can also be used as a psychometric tool, as it performs exploratory and confirmatory factor analysis, using sem and lavaan; the output of these packages is automatically visualized in qgraph, which may aid the interpretation of results. In this article, we introduce qgraph by applying the package functions to data from the NEO-PI-R, a widely used personality questionnaire.},
+ number={4},
+ journal={Journal of Statistical Software},
+ author={Sacha  Epskamp and Angique O.J. Cramer  and  Lourens J. Waldorp and Verena D. Schmittmann, and Denny Borsboom },
+ year={2012},
+ pages={1-€“18}
+}
+
+
+@article{Epskamp2018b,
+author={Sacha Epskamp and Denny Borsboom and Eiko I. Fried},
+ title={A tutorial on regularized partial correlation networks.},
+ volume={23},
+ url={https://doi.org/10.1037/met0000167},
+ doi={10.18637/jss.v048.i04},
+ number={4},
+ journal={Psychological methods},
+ year={2018},
+ pages={617-634}
 }
 
 

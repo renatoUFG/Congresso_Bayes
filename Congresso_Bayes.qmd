@@ -1,12 +1,12 @@
 ---
-title: "Redes Psicométricas para Dados Binários usando abordagem INLA"
+title: "Avaliação da Escolha de Hiperparâmetros para Modelos Gráficos de Cópula Bayesianos"
 author:
   - name: Renato Rodrigues Silva
     email: renato.rrsilva@ufg.br
     affiliations: 
         - name: Federal University of Goias
           department: Institute of Mathematics and Statistics
-          address: Street Address
+          address: Campus Samambaia, CP 
           city: Goiânia
           state: Goiás
           postal-code: 74001-970
@@ -18,7 +18,7 @@ author:
     affiliations:
         - name: Federal University of Goias
           department: Institute of Mathematics and Statistics
-          address: Street Address
+          address: Campus Samambaia, CP 
           city: Goiânia
           state: Goiás
           postal-code: 74001-970
@@ -27,10 +27,25 @@ author:
     affiliations:
         - name: Federal University of Goias
           department: Institute of Mathematics and Statistics
-          address: Street Address
+          address: Campus Samambaia, CP 
           city: Goiânia
           state: Goiás
           postal-code: 74001-970
+  - name: Sandro Rogério Rodrigues Batista
+    email: sandrorbatista@gmail.com 
+    affiliations:
+        - name: Federal University of Goias
+          department: Faculty of Medicine
+          address: 235 c/ 1a. s/n - S. Universitário
+          city: Goiânia
+          state: Goiás
+          postal-code: 74605-020
+        - name: University of Brasilia
+          department: Faculty of Medicine
+          address:  	Campus Universitario Darcy Ribeiro Icc Sul
+          city: Brasília
+          state: Distrito Federal
+          postal-code:  70910-900
 abstract: |
   This is the abstract. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum augue turpis, dictum non malesuada a, volutpat eget velit. Nam placerat turpis purus, eu tristique ex tincidunt et. Mauris sed augue eget turpis ultrices tincidunt. Sed et mi in leo porta egestas. Aliquam non laoreet velit. Nunc quis ex vitae eros aliquet auctor nec ac libero. Duis laoreet sapien eu mi luctus, in bibendum leo molestie. Sed hendrerit diam diam, ac dapibus nisl volutpat vitae. Aliquam bibendum varius libero, eu efficitur justo rutrum at. Sed at tempus elit.
 keywords: 
@@ -50,36 +65,71 @@ format:
 
 # Introdução
 
-Análise de rede psicométrica tem sido utilizada em diversas áreas do conhecimento, tais como: psicologia ambiental, psicopatologia, psicologia da personalidade, saúde pública entre outras [@ZWICKER2020101433; @Borsboom2017; @COSTANTINI201513; @Soares2022 ]. A pressuposição dessa análise é que o fenômeno a ser estudado seja um sistema complexo. Sendo assim, a análise de redes proporciona que a representação das variáveis que compõem o sistema seja feita através de um grafo não direcionado [@Murphy2012]. Além disso, é possível fazer modelar as relações entre as variáveis e identificar padrões de agrupamentos [@Epskamp2022]. Por exemplo, em uma aplicação hipotética na área de psicopatologia, pode-se assumir que os constructos de um transtorno de depressão maior e transtorno de ansiedade generalizada poderiam formar um sistema complexo, composto por diversos sintomas (fadiga, anedonia, humor hipotímico, insônia, irritabilidade, dificuldade de concentração, tensão muscular, etc ...). E esses sintomas se relacionam uns com os outros, de tal modo que eles se retroalimentam mutuamente. Os sintomas seriam representados matematicamente por nodos e a relação entre esses sintomas por arestas de um grafo não direcionado. Nesse exemplo, o objetivo dos pesquisadores seria verificar o padrão de agrupamentos dos sintomas e o relacionamento entre eles.
+Análise de rede tem sido utilizada em diversas áreas do conhecimento, tais como: psicologia ambiental, psicopatologia, psicologia da personalidade, saúde pública entre outras [@ZWICKER2020101433; @Borsboom2017; @COSTANTINI201513; @Soares2022 ]. Com a pressuposição de que o fenômeno a ser estudado seja um sistema complexo, essa análise proporciona que a representação das variáveis que compõem o sistema seja feita através de um grafo não direcionado [@Murphy2012]. Além disso, é possível modelar as relações entre as variáveis e identificar padrões de agrupamentos [@Epskamp2022]. Por exemplo, em uma aplicação de saúde pública, o fenômeno de multimorbidade crônica em uma população pode ser considerado um fenômeno complexo, cada morbidade crônica (diabetes, pressão arterial, colesterol, depressão, etc ... ) pode ser representada por um nodo e a relação entre essas doenças crônicas por arestas de um grafo direcionado. A análise de rede é um método estatístico baseadas em uma classe de modelos probabilísticos denominados Campo Aleatório de Markov (CAM) [@Murphy2012]. Para variáveis aleatórias contínuas, tem-se usado os modelos Campo Aleatório de Markov Gaussianos [@Rue2005]. O processo de estimação de parâmetros desse modelo é bastante desafiador, pois o número de parâmetros é dado por: $\frac{k*(k+1)}{2},$em que $k$ é o número de nodos de um grafo não direcionado. Para lidar com o problema de superajustamento, @Epskamp2018b, propuseram a estimação da correlação parcial com penalização LASSO. Para a modelagem de dados binários, @vanBorkulo2014 propuseram um um modelo estatístico para a representação da rede baseado no modelo Ising. Dada a equivalência entre o modelo Ising e o modelo de regressão logistica, foi proposto o uso da regressão logistíca com penalização LASSO [@Friedman2010] para lidar com o problema de superajustamento. @JSSv093i08 apresentaram o modelo gráfico misto, o qual é um caso especial da distribuição conjunta de um CAM que permite combinar um conjunto arbitrário de distribuições condicionais que sejam membros da família exponencial. Mais recentemente, @Huth apresentou um pacote estatístico com diversos modelos gráficos Bayesianos, dentre eles destaca-se o modelo gráfico de cópula Gaussiano [@JSSv089i03], pois este permite a modelagem tanto de dados contínuos, binários, ordinais e mistos, independente dessa variável pertencer ou não a família exponencial. Segundo @Huth, a vantagem de usar os modelos Bayesianos seria a quantificação da incerteza do espaço de busca da seleção dos modelos candidatos e a quantificação da precisão das estimativas. No entanto, uma questão central ainda a ser respondida é qual o impacto da escolha dos hiperparâmetros na distribuição a posteriori do modelos gráfico de cópula Gaussiano. Dessa forma, o presente estudo objetiva avaliar diferentes escolhas de hiperparâmetros para a distribuição a priori e verificar qual impacto dessas escolhas na precisão das estimativas de medidas de centralidade da rede. Com esta finalidade, serão utilizados os dados de morbidades crônicas obtidos na segunda onda do Estudo Longitudinal da Saúde dos Idosos Brasileiros (ELSI-Brasil) [@Lima-Costa2018]
 
-A análise de redes psicométricas são baseadas nos modelos probabilísticos denominados Campo Aleatório de Markov (CAM) [@Murphy2012]. Nas situações em que se tem apenas variáveis aleatórias contínuas, tem-se usado os modelos Campo Aleatório de Markov Gaussianos. Por sua vez, para variáveis aleatórias dicotômicas, o modelo CAM reduz-se aos modelos Ising [@Murphy2012], objeto de interesse desse presente estudo. Pode-se demostrar que o modelo Ising é relacionado com o modelo de regressão logística, de tal forma que para estimar a relação de associação entre um nodo e os demais, utiliza-se o modelo logístico em que as covariáveis são os nodos remanescentes e a variável resposta é o nodo em questão [@vanBorkulo]. A estimação dos parâmetros desses modelos é algo desafiador. Por exemplo, para o modelo com dados binários, o número de parâmetros é dado por: $\frac{k*(k+1)}{2},$ em que $k$ é o número de nodos do grafo. Sob o enfoque clássico ou frequentista, a solução encontrada foi estimar os parâmetros com regularização LASSO [@Epskamp2018; @vanBorkulo]. Como enfoque alternativo para estimar os parâmetros, recentemente, observou-se publicações de estudos de análise de redes psicométricas utilizando a abordagem Bayesiana. @Marsman2023
+# Material e Método
 
-[@Huth; @Marsman2023].
+O conjunto de dados utilizado foi obtido a partir de registros de autorelatos sobre morbidades crônicas dos participantes da segunda onda do estudo longitudinal da saúde dos idosos brasileiros, ELSI [@Lima-Costa2018]. Na etapa de processamento de dados, retirou-se os dados faltantes, totalizando N observações.
 
 ## Campo Aleatório de Markov
 
 CAM pode ser definido como um conjunto de variáveis aleatórias
 
-Ising Model
+## Campo Aleatório de Markov Gaussiano
 
-Relação entre Ising Model e Modelo Autologisitico
+## Modelos Gráficos de Cópula Gaussiano
 
-INLA
+# Resultados 
 
-Aplicação
-
-INLA Autologistic
-
-bgms
-
-Comparação de Resultados
-
-Referências
+## Avaliação do parâmetro de probabildidade de inclusão
 
 ```{r}
 #| message: false
 #| warning: false
 #| include: false  
 
+rm(list=ls())
 library(tidyverse)
+library(readr) 
+library(gridExtra)
+library(ggpubr)
+library(igraph)
+library(qgraph)
+library(BDgraph)
+
+data_morb = read.table(file = "bancoexport.csv", 
+  sep = ",", stringsAsFactors = FALSE,
+  fileEncoding = "latin1", header=TRUE)
+data_morb_over_60 = filter(data_morb, idade >= 60)
+morbidity.cod = 
+  c("n9",  "n10", "n11", "n12", 
+    "n28", "n35", "n44", "n46",
+    "n48", "n50", "n52", "n54",
+    "n55", "n56", "n57", "n58", 
+    "n59", "n60", "n61", "n62", "n63", "ha","dm")
+
+data_morb_over_60 = select(data_morb_over_60, 
+                           one_of(morbidity.cod))
+
+#Codificando os dados e tornando-os numericos
+for(i in 1:ncol(data_morb_over_60)){
+#for(i in 1:(ncol(data_morb_over_60)-2)){
+  for(j in 1:nrow(data_morb_over_60)){
+    if(is.na(data_morb_over_60[j,i])){
+      next
+    }
+    if(data_morb_over_60[j,i] == "Sim" ){
+       data_morb_over_60[j,i] = "1"
+    } else if(data_morb_over_60[j,i] == "Não" ){
+       data_morb_over_60[j,i] = "0"
+    } else if(data_morb_over_60[j,i] == 
+              "Sim, apenas durante a gravidez" ){
+      data_morb_over_60[j,i] = "0"
+    } else {
+      data_morb_over_60[j,i] = "NA"
+    }
+  }
+} 
+
+
 ```

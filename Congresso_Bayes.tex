@@ -130,8 +130,8 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Redes Psicométricas para Dados Binários usando abordagem INLA},
-  pdfauthor={Renato Rodrigues Silva; Márcio Augusto Ferreira Rodrigues; Everton Batista da Rocha},
+  pdftitle={Avaliação da Escolha de Hiperparâmetros para Modelos Gráficos de Cópula Bayesianos},
+  pdfauthor={Renato Rodrigues Silva; Márcio Augusto Ferreira Rodrigues; Everton Batista da Rocha; Sandro Rogério Rodrigues Batista},
   pdfkeywords={keyword1, keyword2},
   colorlinks=true,
   linkcolor={blue},
@@ -144,7 +144,8 @@
 \begin{document}
 
 \begin{frontmatter}
-\title{Redes Psicométricas para Dados Binários usando abordagem INLA}
+\title{Avaliação da Escolha de Hiperparâmetros para Modelos Gráficos de
+Cópula Bayesianos}
 \author[1]{Renato Rodrigues Silva%
 \corref{cor1}%
 \fnref{fn1}}
@@ -157,13 +158,24 @@
 %
 }
  \ead{evertonbatista@ufg.br} 
+\author[2,3]{Sandro Rogério Rodrigues Batista%
+%
+}
+ \ead{sandrorbatista@gmail.com} 
 
 \affiliation[1]{organization={Federal University of Goias, Institute of
-Mathematics and Statistics},addressline={Street
-Address},city={Goiânia},postcode={74001-970},postcodesep={}}
+Mathematics and Statistics},addressline={Campus Samambaia,
+CP},city={Goiânia},postcode={74001-970},postcodesep={}}
+\affiliation[2]{organization={Federal University of Goias, Faculty of
+Medicine},addressline={235 c/ 1a. s/n - S.
+Universitário},city={Goiânia},postcode={74605-020},postcodesep={}}
+\affiliation[3]{organization={University of Brasilia, Faculty of
+Medicine},addressline={Campus Universitario Darcy Ribeiro Icc
+Sul},city={Brasília},postcode={70910-900},postcodesep={}}
 
 \cortext[cor1]{Corresponding author}
 \fntext[fn1]{This is the first author footnote.}
+
 
 
         
@@ -191,73 +203,78 @@ tempus elit.
     
 \section{Introdução}\label{introduuxe7uxe3o}
 
-Análise de rede psicométrica tem sido utilizada em diversas áreas do
-conhecimento, tais como: psicologia ambiental, psicopatologia,
-psicologia da personalidade, saúde pública entre outras \citep[
-]{ZWICKER2020101433, Borsboom2017, COSTANTINI201513, Soares2022}. A
-pressuposição dessa análise é que o fenômeno a ser estudado seja um
-sistema complexo. Sendo assim, a análise de redes proporciona que a
-representação das variáveis que compõem o sistema seja feita através de
-um grafo não direcionado \citep{Murphy2012}. Além disso, é possível
-fazer modelar as relações entre as variáveis e identificar padrões de
-agrupamentos \citep{Epskamp2022}. Por exemplo, em uma aplicação
-hipotética na área de psicopatologia, pode-se assumir que os constructos
-de um transtorno de depressão maior e transtorno de ansiedade
-generalizada poderiam formar um sistema complexo, composto por diversos
-sintomas (fadiga, anedonia, humor hipotímico, insônia, irritabilidade,
-dificuldade de concentração, tensão muscular, etc \ldots). E esses
-sintomas se relacionam uns com os outros, de tal modo que eles se
-retroalimentam mutuamente. Os sintomas seriam representados
-matematicamente por nodos e a relação entre esses sintomas por arestas
-de um grafo não direcionado. Nesse exemplo, o objetivo dos pesquisadores
-seria verificar o padrão de agrupamentos dos sintomas e o relacionamento
-entre eles.
-
-A análise de redes psicométricas são baseadas nos modelos
+Análise de rede tem sido utilizada em diversas áreas do conhecimento,
+tais como: psicologia ambiental, psicopatologia, psicologia da
+personalidade, saúde pública entre outras \citep[
+]{ZWICKER2020101433, Borsboom2017, COSTANTINI201513, Soares2022}. Com a
+pressuposição de que o fenômeno a ser estudado seja um sistema complexo,
+essa análise proporciona que a representação das variáveis que compõem o
+sistema seja feita através de um grafo não direcionado
+\citep{Murphy2012}. Além disso, é possível modelar as relações entre as
+variáveis e identificar padrões de agrupamentos \citep{Epskamp2022}. Por
+exemplo, em uma aplicação de saúde pública, o fenômeno de multimorbidade
+crônica em uma população pode ser considerado um fenômeno complexo, cada
+morbidade crônica (diabetes, pressão arterial, colesterol, depressão,
+etc \ldots{} ) pode ser representada por um nodo e a relação entre essas
+doenças crônicas por arestas de um grafo direcionado. A análise de rede
+é um método estatístico baseadas em uma classe de modelos
 probabilísticos denominados Campo Aleatório de Markov (CAM)
-\citep{Murphy2012}. Nas situações em que se tem apenas variáveis
-aleatórias contínuas, tem-se usado os modelos Campo Aleatório de Markov
-Gaussianos. Por sua vez, para variáveis aleatórias dicotômicas, o modelo
-CAM reduz-se aos modelos Ising \citep{Murphy2012}, objeto de interesse
-desse presente estudo. Pode-se demostrar que o modelo Ising é
-relacionado com o modelo de regressão logística, de tal forma que para
-estimar a relação de associação entre um nodo e os demais, utiliza-se o
-modelo logístico em que as covariáveis são os nodos remanescentes e a
-variável resposta é o nodo em questão \citep{vanBorkulo}.
+\citep{Murphy2012}. Para variáveis aleatórias contínuas, tem-se usado os
+modelos Campo Aleatório de Markov Gaussianos \citep{Rue2005}. O processo
+de estimação de parâmetros desse modelo é bastante desafiador, pois o
+número de parâmetros é dado por: \(\frac{k*(k+1)}{2},\)em que \(k\) é o
+número de nodos de um grafo não direcionado. Para lidar com o problema
+de superajustamento, \citet{Epskamp2018b}, propuseram a estimação da
+correlação parcial com penalização LASSO. Para a modelagem de dados
+binários, \citet{vanBorkulo2014} propuseram um um modelo estatístico
+para a representação da rede baseado no modelo Ising. Dada a
+equivalência entre o modelo Ising e o modelo de regressão logistica, foi
+proposto o uso da regressão logistíca com penalização LASSO
+\citep{Friedman2010} para lidar com o problema de superajustamento.
+\citet{JSSv093i08} apresentaram o modelo gráfico misto, o qual é um caso
+especial da distribuição conjunta de um CAM que permite combinar um
+conjunto arbitrário de distribuições condicionais que sejam membros da
+família exponencial. Mais recentemente, \citet{Huth} apresentou um
+pacote estatístico com diversos modelos gráficos Bayesianos, dentre eles
+destaca-se o modelo gráfico de cópula Gaussiano \citep{JSSv089i03}, pois
+este permite a modelagem tanto de dados contínuos, binários, ordinais e
+mistos, independente dessa variável pertencer ou não a família
+exponencial. Segundo \citet{Huth}, a vantagem de usar os modelos
+Bayesianos seria a quantificação da incerteza do espaço de busca da
+seleção dos modelos candidatos e a quantificação da precisão das
+estimativas. No entanto, uma questão central ainda a ser respondida é
+qual o impacto da escolha dos hiperparâmetros na distribuição a
+posteriori do modelos gráfico de cópula Gaussiano. Dessa forma, o
+presente estudo objetiva avaliar diferentes escolhas de hiperparâmetros
+para a distribuição a priori e verificar qual impacto dessas escolhas na
+precisão das estimativas de medidas de centralidade da rede. Com esta
+finalidade, serão utilizados os dados de morbidades crônicas obtidos na
+segunda onda do Estudo Longitudinal da Saúde dos Idosos Brasileiros
+(ELSI-Brasil) \citep{Lima-Costa2018}
 
-A estimação dos parâmetros desses modelos é algo desafiador. Por
-exemplo, para o modelo com dados binários, o número de parâmetros é dado
-por: \(\frac{k*(k+1)}{2},\) em que \(k\) é o número de nodos do grafo.
-Sob o enfoque clássico ou frequentista, a solução encontrada foi estimar
-os parâmetros \citep{Epskamp2018}.
+\section{Material e Método}\label{material-e-muxe9todo}
 
-Recentemente, observou-se publicações de estudos de análise de redes
-psicométricas utilizando o enfoque Bayesiano
-
-\citet{Marsman2023}
-
-\citep{Huth, Marsman2023}.
+O conjunto de dados utilizado foi obtido a partir de registros de
+autorelatos sobre morbidades crônicas dos participantes da segunda onda
+do estudo longitudinal da saúde dos idosos brasileiros, ELSI
+\citep{Lima-Costa2018}. Na etapa de processamento de dados, retirou-se
+os dados faltantes, totalizando N observações.
 
 \subsection{Campo Aleatório de
 Markov}\label{campo-aleatuxf3rio-de-markov}
 
 CAM pode ser definido como um conjunto de variáveis aleatórias
 
-Ising Model
+\subsection{Campo Aleatório de Markov
+Gaussiano}\label{campo-aleatuxf3rio-de-markov-gaussiano}
 
-Relação entre Ising Model e Modelo Autologisitico
+\subsection{Modelos Gráficos de Cópula
+Gaussiano}\label{modelos-gruxe1ficos-de-cuxf3pula-gaussiano}
 
-INLA
+\section{Resultados}\label{resultados}
 
-Aplicação
-
-INLA Autologistic
-
-bgms
-
-Comparação de Resultados
-
-Referências
+\subsection{Avaliação do parâmetro de probabildidade de
+inclusão}\label{avaliauxe7uxe3o-do-paruxe2metro-de-probabildidade-de-inclusuxe3o}
 
 
   \bibliography{reference.bib}
